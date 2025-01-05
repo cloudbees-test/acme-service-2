@@ -4,10 +4,12 @@ name: My workflow
 on:
   workflow_dispatch:
 jobs:
-  build:
+  deploy:
+    uses: github.com/swashbuck1r/myapp-dec19/corp-workflows/service-deploy.yaml@main
+  test:
     steps:
-      - name: Say hello
+      - name: Say hello from test job
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "hello service-1"
+          echo "hello service-1 from test job"
