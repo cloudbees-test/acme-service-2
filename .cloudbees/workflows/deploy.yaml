@@ -6,10 +6,3 @@ on:
 jobs:
   deploy:
     uses: github.com/swashbuck1r/myapp-dec19/corp-workflows/service-deploy.yaml@main
-  test:
-    steps:
-      - name: Say hello from test job
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
-          echo "hello service-1 from test job"
