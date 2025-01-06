@@ -1,8 +1,8 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
-name: My workflow
+name: service-deploy
 on:
   workflow_dispatch:
 jobs:
   deploy:
-    uses: github.com/swashbuck1r/myapp-dec19/corp-workflows/service-deploy.yaml@main
+    uses: github.com/cloudbees-test/acme-portal/corp-workflows/service-deploy.yaml@main
