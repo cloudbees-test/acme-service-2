@@ -1,2 +1,1 @@
-# New Repository
-This is an automatically generated README file.
+This is a simple webapp API service that provides some mock TODO list functionality.
