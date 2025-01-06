@@ -47,3 +47,12 @@ jobs:
         uses: cloudbees-io/kaniko@v1
         with:
           destination: ${{ steps.aws-login.outputs.aws-account-id }}.dkr.ecr.us-east-1.amazonaws.com/${{ env.APP_NAMESPACE }}/${{ env.APP_NAME }}-image:${{ cloudbees.version }}
+
+      - name: Promote the image for production
+        uses: cloudbees-io/ecr-promote-image@v1
+        with:
+           registry-url: ${{ steps.aws-login.outputs.aws-account-id }}.dkr.ecr.us-east-1.amazonaws.com/
+           source-repository-name: ${{ env.APP_NAMESPACE }}/${{ env.APP_NAME }}-image
+           target-repository-name: ${{ env.APP_NAMESPACE }}/${{ env.APP_NAME }}-image
+           source-tag: ${{ cloudbees.version }}
+           target-tag: 'production'
