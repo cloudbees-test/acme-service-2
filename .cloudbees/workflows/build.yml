@@ -7,9 +7,13 @@ on:
     branches:
       - '**'
   workflow_dispatch:
+  
+permissions:
+  id-token: write
 
 # Environment vars
 env:
+  APP_NAMESPACE: acme
   APP_NAME: acme-service-2
 
 jobs:
@@ -42,4 +46,4 @@ jobs:
         id: image-publish
         uses: cloudbees-io/kaniko@v1
         with:
-          destination: ${{ steps.aws-login.outputs.aws-account-id }}.dkr.ecr.us-east-1.amazonaws.com/${{ env.APP_NAME }}-image:${{ cloudbees.version }}
+          destination: ${{ steps.aws-login.outputs.aws-account-id }}.dkr.ecr.us-east-1.amazonaws.com/${{ env.APP_NAMESPACE }}/${{ env.APP_NAME }}-image:${{ cloudbees.version }}
